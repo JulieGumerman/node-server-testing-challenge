@@ -6,8 +6,8 @@ const Stuff = require("./funstuff-model");
 
 stuffRoute.get("/", (req, res) => {
     Stuff.getStuff()
-        .then(res => {
-            res.status(200).json(req)
+        .then(stuff => {
+            res.status(200).json(stuff)
         })
         .catch(err => {
             res.status(500).json({ message: "We couldn't get your stuff..."})
@@ -15,9 +15,9 @@ stuffRoute.get("/", (req, res) => {
 })
 
 stuffRoute.post("/", (req, res) => {
-    Stuff.addStuff(req.body)
-        .then(res => {
-            res.status(200).json(res);
+    Stuff.addStuff(req.body, "id")
+        .then(item => {
+            res.status(200).json(item);
         })
         .catch(err => {
             res.status(500).json({ message: "ruh-roh"})

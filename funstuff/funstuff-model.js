@@ -9,6 +9,6 @@ const addStuff = (item) => {
 }
 
 module.exports = {
-    getStuff,
+    getStuff, 
     addStuff
 }
