@@ -11,13 +11,13 @@ describe("GET /", () => {
             // const expectedStatusCode = 200;
             // const response = await request(stuffRoute).get("/");
             // expect(response.status).toEqual(expectedStatusCode);
-            return request(stuffRoute).get("/").expect(200);
+            return request(server).get("/").expect(200);
     })
 
     it ("should return JSON", () => {
         const response = request(server).get("/");
 
-        expect(response).toMatch(/json/i)
+        expect(response.type);
     })
     
     // it ('should return { api: "up" } ', async () => {
