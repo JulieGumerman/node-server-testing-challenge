@@ -1,6 +1,4 @@
 const Stuff = require("./funstuff-model.js");
-const request = require("supertest");
-const stuffRoute = require("./funstuff-route");
 const db = require("../data/dbConfig.js");
 
 // describe("funstuff model", () => {
@@ -13,22 +11,22 @@ describe("stuff model", () => {
     })
 
     describe("addStuff", () => {
-    it ("should add a fun thing to the database", async () => {
-        await Stuff.addStuff({ fun_thing: "rainstorms"})
-        const stuff = await db("funstuff");
-        let i = stuff.length;
-        expect(stuff).toHaveLength(i++);
-    })
+        it ("should add a fun thing to the database", async () => {
+            await Stuff.addStuff({ fun_thing: "rainstorms"})
+            const stuff = await db("funstuff");
+            let i = stuff.length;
+            expect(stuff).toHaveLength(i++);
+            // expect(stuff).toHaveProperty(fun_thing);
+        })
 
     })
+    describe("getStuff", () => {
+        it ("should show everything in the database", async () => {
+            await Stuff.getStuff()
+
+        })
+    })
+
+
 })
 
-describe("/ get", () => {
-    it("should return a 200 status code on completion", () => {
-        return request(stuffRoute)
-            .get("/")
-            .then(res => {
-                expect(res.status).toBe(200);
-            })
-    })
-})
